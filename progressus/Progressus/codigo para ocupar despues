@@ -1,0 +1,76 @@
+codigo para ocupar despues
+<div class="col-lg-8">
+										<label class="checkbox">
+											<input type="checkbox"> 
+											I've read the <a href="page_terms.html">Terms and Conditions</a>
+										</label>                        
+									</div>
+
+
+									
+		'$_REQUEST[id_estado]'
+		94887003765
+
+		<input type="text" maxlength="10" size="10" name="dato" onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" />
+
+
+cosas pendientes
+validar con 2 campos d contraseñas
+poner autocomplete="off" en todos los inputs
+	
+
+
+
+
+
+if ($_REQUEST[status]=='Activo') {
+    	# code...
+    	echo "activo";
+    }else{
+    	echo "inactivo";
+    	
+    }
+
+
+ 
+
+echo $HTTP_REFERER;
+
+
+<div class="col-sm-6">
+									<label>Estado<span class="text-danger">*</span></label>
+									<select class="form-control" name="status">
+ 									 <option>Activo</option>
+ 									 <option>Inactivo</option>
+									</select>
+								</div>
+
+
+
+
+
+								<tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+
+
+
+    echo "<script>";
+echo "alert('Actualizacion de estado de usuario exitoso');";  
+echo "javascript:window.history.back();";
+echo "</script>";
+}
