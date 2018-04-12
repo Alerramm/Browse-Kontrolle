@@ -40,8 +40,8 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Acceso <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="signin.html">Cliente</a></li>
-							<li class="active"><a href="signin.html">Usuario</a></li>
+							<li><a href="signin_cliente.html">Cliente</a></li>
+							<li class="active"><a href="signin_usuario.html">Usuario</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
