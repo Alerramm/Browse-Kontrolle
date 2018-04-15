@@ -76,7 +76,7 @@ function valida(e){
 
 		<ol class="breadcrumb">
 			<li><a href="index.html">Inicio</a></li>
-			<li class="active">Nosotros</li>
+			<li class="active">Contacto</li>
 		</ol>
 
 		<div class="row">
@@ -94,13 +94,13 @@ function valida(e){
 					<form action="enviar_contacto.php">
 						<div class="row">
 							<div class="col-sm-4">
-								<input class="form-control" type="text" placeholder="Nombre" name="nombre">
+								<input class="form-control" type="text" placeholder="Nombre" name="nombre" required>
 							</div>
 							<div class="col-sm-4">
-								<input class="form-control" type="email" placeholder="Correo" name="correo">
+								<input class="form-control" type="email" placeholder="Correo" name="correo" required>
 							</div>
 							<div class="col-sm-4">
-								<input class="form-control" type="text" placeholder="Telefono" name="telefono" onkeypress="return valida(event)" maxlength="13">
+								<input class="form-control" type="text" placeholder="Telefono" name="telefono" onkeypress="return valida(event)" maxlength="13" required>
 							</div>
 						</div>
 						<br>

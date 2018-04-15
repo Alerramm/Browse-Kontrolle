@@ -10,7 +10,7 @@ echo "</script>";
 } else {
 	# code...
 $mysqli= new mysqli("localhost","root","","id3763537_comentarios");
-
+$mysqli->set_charset("utf8");
 	if ($mysqli->connect_errno) {
     echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 								}
@@ -103,7 +103,7 @@ $curpo = current($mysqli ->query("SELECT curp FROM usuarios WHERE curp = '$_REQU
 	<div class="container">
 
 		<ol class="breadcrumb">
-			<li><a href="gerente.html">Regresar</a></li>
+			<li><a href="contact.php">Change Status</a></li>
 			<li class="active">Modificacion</li>
 		</ol>
 
@@ -183,7 +183,9 @@ $curpo = current($mysqli ->query("SELECT curp FROM usuarios WHERE curp = '$_REQU
 
 								<div class="row">
 									
-									<div class="col-lg-4 text-right">
+									<div class="col-lg-14 text-right">
+
+										<button class="btn btn-action" type="button" name="Cancelar" value="Cancelar" onClick="history.back()">CANCELAR</button>
 										<button class="btn btn-action" type="submit">Modificar</button>
 									</div>
 								</div>
