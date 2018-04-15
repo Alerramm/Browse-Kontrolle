@@ -32,11 +32,11 @@
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-				<a class="navbar-brand" href="index.html"><img src="assets/images/logo1.png" alt="Progressus HTML5 template"></a>
+				<a class="navbar-brand" href="gerente.html"><img src="assets/images/logo1.png" alt="Progressus HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
-					<li><a href="index.html">Inicio</a></li>
+					<li><a href="gerente.html">Inicio</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Acceso <b class="caret"></b></a>
 						<ul class="dropdown-menu">
@@ -64,7 +64,7 @@
 	<div class="container">
 
 		<ol class="breadcrumb">
-			<li><a href="index.html">Inicio</a></li>
+			<li><a href="gerente.html">Inicio</a></li>
 			<li class="active">Change Status</li>
 		</ol>
 
@@ -97,14 +97,14 @@
 					</form>
 <br>
 <br><br><br>
-						<form >
+						<form action="Actualizar.php">
 							<div class="col-sm-12">
 								<div class="row">
 									<label>Usuario</label>
 									<select class="form-control" name="status" id="status">
+ 									 <option value="AyI">Activos/Inactivos</option>
  									 <option value="A">Activo</option>
  									 <option value="I">Inactivo</option>
- 									 <option value="AyI">Activos/Inactivos</option>
 									</select>
 								<br>
 								</div>	
@@ -182,7 +182,24 @@ while ($fila = $result->fetch_row()) {
 
 	?>
 
-
+<tr class="bg-danger">
+	<th> <?php  
+		echo "<a href='changeS.php?id=$id&st=$st' ><img class='mr-3'  src='assets/images/off.png' alt='Generic placeholder image' ></a>";
+		?>  </th>
+      <th scope="row">Desactivado</th>
+      <td><?php 
+       printf("%s\n", $fila[1]);
+       ?>  
+   	  </td>
+      <td><?php 
+       printf("%s\n", $fila[2]);
+       ?>  
+   	  </td>
+       <td><?php 
+       printf("%s\n", $fila[3]);
+       ?>  
+   	  </td>
+    </tr>
   
 
   <?php 

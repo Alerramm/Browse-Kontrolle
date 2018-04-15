@@ -6,7 +6,7 @@
 	<meta name="description" content="">
 	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
 	
-	<title>Contact us - Progressus Bootstrap template</title>
+	<title>Browse-Kontrolle</title>
 
 	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
 	
@@ -23,6 +23,22 @@
 	<script src="assets/js/html5shiv.js"></script>
 	<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
+<script>
+function valida(e){
+    tecla = (document.all) ? e.keyCode : e.which;
+
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla==8){
+        return true;
+    }
+        
+    // Patron de entrada, en este caso solo acepta numeros
+    patron =/[0-9]/;
+    tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+}
+</script>
+
 </head>
 
 <body>
@@ -32,21 +48,21 @@
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-				<a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="Progressus HTML5 template"></a>
+				<a class="navbar-brand" href="index.html"><img src="assets/images/logo1.png" alt="Progressus HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="about.html">About</a></li>
+					<li><a href="index.html">Inicio</a></li>
+					<li><a href="about.html">Nosotros</a></li>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">More Pages <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Servicios <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="sidebar-left.html">Left Sidebar</a></li>
-							<li><a href="sidebar-right.html">Right Sidebar</a></li>
+							<li><a href="sidebar-left.html">Servicios</a></li>
+							<li class="active"><a href="sidebar-right.html">Guia de contratacion</a></li>
 						</ul>
 					</li>
-					<li class="active"><a href="contact.html">Contact</a></li>
-					<li><a class="btn" href="signin.html">SIGN IN / SIGN UP</a></li>
+						<li><a href="contact.html">Contacto</a></li>
+					<li><a class="btn" href="signin.html">SIGN IN / SIGN UP</a></li>	
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
@@ -59,8 +75,8 @@
 	<div class="container">
 
 		<ol class="breadcrumb">
-			<li><a href="index.html">Home</a></li>
-			<li class="active">About</li>
+			<li><a href="index.html">Inicio</a></li>
+			<li class="active">Nosotros</li>
 		</ol>
 
 		<div class="row">
@@ -68,38 +84,38 @@
 			<!-- Article main content -->
 			<article class="col-sm-9 maincontent">
 				<header class="page-header">
-					<h1 class="page-title">Contact us</h1>
+					<h1 class="page-title">Contactanos</h1>
 				</header>
 				
 				<p>
-					We’d love to hear from you. Interested in working together? Fill out the form below with some info about your project and I will get back to you as soon as I can. Please allow a couple days for me to respond.
+					Nos encantaría saber de usted. ¿Interesado en trabajar juntos? Complete el siguiente formulario con información sobre su necesidad y uno de nuestros coolaboradoresse pondra en contacto con usted tan pronto como pueda. Por favor, espere un correo con la informacion de su asesor.
 				</p>
 				<br>
-					<form>
+					<form action="enviar_contacto.php">
 						<div class="row">
 							<div class="col-sm-4">
-								<input class="form-control" type="text" placeholder="Name">
+								<input class="form-control" type="text" placeholder="Nombre" name="nombre">
 							</div>
 							<div class="col-sm-4">
-								<input class="form-control" type="text" placeholder="Email">
+								<input class="form-control" type="email" placeholder="Correo" name="correo">
 							</div>
 							<div class="col-sm-4">
-								<input class="form-control" type="text" placeholder="Phone">
+								<input class="form-control" type="text" placeholder="Telefono" name="telefono" onkeypress="return valida(event)" maxlength="13">
 							</div>
 						</div>
 						<br>
 						<div class="row">
 							<div class="col-sm-12">
-								<textarea placeholder="Type your message here..." class="form-control" rows="9"></textarea>
+								<textarea placeholder="Escribe tu mensaje detallando tu solicitud." class="form-control" name="tex" rows="9"></textarea>
 							</div>
 						</div>
 						<br>
 						<div class="row">
 							<div class="col-sm-6">
-								<label class="checkbox"><input type="checkbox"> Sign up for newsletter</label>
+								<!-- se quito el combobox para no modificar la estructura se dejo la etiqueta div -->
 							</div>
 							<div class="col-sm-6 text-right">
-								<input class="btn btn-action" type="submit" value="Send message">
+								<input class="btn btn-action" type="submit" value="Enviar">
 							</div>
 						</div>
 					</form>
@@ -111,13 +127,13 @@
 			<aside class="col-sm-3 sidebar sidebar-right">
 
 				<div class="widget">
-					<h4>Address</h4>
+					<h4>Dirección</h4>
 					<address>
-						2002 Holcombe Boulevard, Houston, TX 77030, USA
+						Av. San francisco, Mz30 Lt12 C3, Fraccionamiento Los Heroes Coacalco, Estado de Mexico, C.P. 55712
 					</address>
-					<h4>Phone:</h4>
+					<h4>Telefono:</h4>
 					<address>
-						(713) 791-1414
+						7699 9810 
 					</address>
 				</div>
 
@@ -126,12 +142,9 @@
 
 		</div>
 	</div>	<!-- /container -->
-	
-	<section class="container-full top-space">
-		<div id="map"></div>
-	</section>
+</br>
 
-	<footer id="footer">
+	<footer id="footer" class="top-space">
 
 		<div class="footer1">
 			<div class="container">
@@ -140,10 +153,10 @@
 					<div class="col-md-3 widget">
 						<h3 class="widget-title">Contact</h3>
 						<div class="widget-body">
-							<p>+234 23 9873237<br>
-								<a href="mailto:#">some.email@somewhere.com</a><br>
+							<p>(55)76999810<br>
+								<a href="mailto:#">browse-kontrolle@gmail.com</a><br>
 								<br>
-								234 Hidden Pond Road, Ashland City, TN 37015
+								AV. San Francisco no. 30 Col Los Heroes Mpio. Coacalco, 55712, estado de México.
 							</p>	
 						</div>
 					</div>
@@ -151,20 +164,18 @@
 					<div class="col-md-3 widget">
 						<h3 class="widget-title">Follow me</h3>
 						<div class="widget-body">
-							<p class="follow-me-icons clearfix">
-								<a href=""><i class="fa fa-twitter fa-2"></i></a>
-								<a href=""><i class="fa fa-dribbble fa-2"></i></a>
-								<a href=""><i class="fa fa-github fa-2"></i></a>
-								<a href=""><i class="fa fa-facebook fa-2"></i></a>
+							<p class="follow-me-icons">
+								<a href="https://www.facebook.com/Administracion.De.Gas/?ref=settings" target="_blank"><i class="fa fa-facebook fa-2"></i></a>
 							</p>	
 						</div>
 					</div>
 
 					<div class="col-md-6 widget">
-						<h3 class="widget-title">Text widget</h3>
+						<h3 class="widget-title">BROWSE-KONTROLLE</h3>
 						<div class="widget-body">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, dolores, quibusdam architecto voluptatem amet fugiat nesciunt placeat provident cumque accusamus itaque voluptate modi quidem dolore optio velit hic iusto vero praesentium repellat commodi ad id expedita cupiditate repellendus possimus unde?</p>
-							<p>Eius consequatur nihil quibusdam! Laborum, rerum, quis, inventore ipsa autem repellat provident assumenda labore soluta minima alias temporibus facere distinctio quas adipisci nam sunt explicabo officia tenetur at ea quos doloribus dolorum voluptate reprehenderit architecto sint libero illo et hic.</p>
+							<p> La empresa BROWSE-KONTROLLE nos dedicamos a suminstrar gas en negocios como pastelerias, restaurantes, hoteles y casas habitacion.
+							La empresa se enfoca en dar un buen servicio de intalacion del gas, tomando en cuenta la seguridad del consumidor al igual que la segurid  de nuestros colaboradores. </p>
+							
 						</div>
 					</div>
 
@@ -179,11 +190,7 @@
 					<div class="col-md-6 widget">
 						<div class="widget-body">
 							<p class="simplenav">
-								<a href="#">Home</a> | 
-								<a href="about.html">About</a> |
-								<a href="sidebar-right.html">Sidebar</a> |
-								<a href="contact.html">Contact</a> |
-								<b><a href="signup.html">Sign up</a></b>
+								
 							</p>
 						</div>
 					</div>
@@ -191,7 +198,7 @@
 					<div class="col-md-6 widget">
 						<div class="widget-body">
 							<p class="text-right">
-								Copyright &copy; 2014, Your name. Designed by <a href="http://gettemplate.com/" rel="designer">gettemplate</a> 
+								
 							</p>
 						</div>
 					</div>
@@ -199,6 +206,7 @@
 				</div> <!-- /row of widgets -->
 			</div>
 		</div>
+
 	</footer>	
 		
 

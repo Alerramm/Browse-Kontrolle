@@ -6,7 +6,7 @@
 	<meta name="description" content="">
 	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
 	
-	<title>Sign in - Progressus Bootstrap template</title>
+	<title>Browse-Kontrolle</title>
 
 	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
 	
@@ -23,6 +23,60 @@
 	<script src="assets/js/html5shiv.js"></script>
 	<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
+<style>
+    .modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+.modalDialog > div {
+	width: 400px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
+  -webkit-transition: opacity 400ms ease-in;
+-moz-transition: opacity 400ms ease-in;
+transition: opacity 400ms ease-in;
+}
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+.close:hover { background: #00d9ff; }
+</style>
 </head>
 
 <body>
@@ -32,11 +86,11 @@
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-				<a class="navbar-brand" href="index.html"><img src="assets/images/logo1.png" alt="Progressus HTML5 template"></a>
+				<a class="navbar-brand" href="gerente.html"><img src="assets/images/logo1.png" alt="Progressus HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
-					<li><a href="index.html">Inicio</a></li>
+					<li><a href="gerente.html">Inicio</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Acceso <b class="caret"></b></a>
 						<ul class="dropdown-menu">
@@ -64,8 +118,8 @@
 	<div class="container">
 
 		<ol class="breadcrumb">
-			<li><a href="index.html">Home</a></li>
-			<li class="active">Acceso Usuario</li>
+			<li><a href="gerente.html">Inicio</a></li>
+			<li class="active">Acceso Cliente</li>
 		</ol>
 
 		<div class="row">
@@ -73,20 +127,21 @@
 			<!-- Article main content -->
 			<article class="col-xs-12 maincontent">
 				<header class="page-header">
-					<h1 class="page-title">Acceso Usuario</h1>
+					<h1 class="page-title">Acceso Cliente</h1>
 				</header>
 				
 				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<h3 class="thin text-center">Acceso al portal de un Usuario</h3>
+							<h3 class="thin text-center">Acceso al portal de un cliente</h3>
 							
 							<hr>
 							
-							<form action="Acceso_usuario.php">
+							<form>
 								<div class="top-margin">
+									<?php $correoS=$_GET['correo']; ?>
 									<label>Correo <span class="text-danger">*</span></label>
-									<input type="email" name="correo" class="form-control" required>
+									<input type="email" value=<?php echo $correoS;?> name="correo" class="form-control" required>
 								</div>
 								
 
@@ -94,7 +149,7 @@
 
 								<div class="row">
 									<div class="col-lg-8">
-										<b><a href="">¿Olvidaste el correo?</a></b>
+										<b><a href="#openModal">¿Olvidaste el correo?</a></b>
 									</div>
 									<div class="col-lg-4 text-right">
 										<button class="btn btn-action" type="submit">Acceso</button>
@@ -105,6 +160,29 @@
 					</div>
 
 				</div>
+				<div id="openModal" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">X</a>
+		<h2>Verificacion </h2>
+		<form action="buscar_correo_cliente.php" method="post" autocomplete="off">
+								<div> 
+									<label>Nombre <span class="text-danger">*</span></label>
+									<input type="text" name="nombre" class="form-control" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								</div>
+								<div >
+									<label>Apellido Paterno <span class="text-danger">*</span></label>
+									<input type="text" name="apaterno" class="form-control" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								</div>
+								<div >
+									<label>Apellido Materno <span class="text-danger">*</span></label>
+									<input type="text" name="amaterno" class="form-control"  style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								</div>
+								<div class="top-margin col-lg-4 text-right">
+										<button class="btn btn-action" type="submit">buscar</button>
+									</div>
+	    </form>
+	</div>
+</div>
 				
 			</article>
 			<!-- /Article -->

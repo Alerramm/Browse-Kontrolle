@@ -18,7 +18,7 @@ $v2=$_GET['st'];
 }else{
 echo "<script>";
 echo "alert('Actualizacion de estado de usuario exitoso');";  
-echo "window.location = 'http://localhost/progressus/Progressus/contact.php';";
+echo "window.location = '../Progressus/contact.php';";
 echo "</script>";
 }
     }else{
@@ -31,7 +31,7 @@ if (!$mysqli->query("UPDATE `id3763537_comentarios`.`usuarios` SET `id_estado` =
 }else{
 echo "<script>";
 echo "alert('Actualizacion de estado de usuario exitoso');";  
-echo "window.location = 'http://localhost/progressus/Progressus/contact.php';";
+echo "window.location = '../Progressus/contact.php';";
 echo "</script>";
 }
 
