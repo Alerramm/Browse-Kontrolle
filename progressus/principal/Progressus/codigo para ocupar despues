@@ -87,3 +87,8 @@ ALTER TABLE `clientes` CHANGE `colonia` `colonia` VARCHAR(50) CHARACTER SET utf8
 ALTER TABLE `clientes` CHANGE `codigo_postal` `codigo_postal` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
 ALTER TABLE `clientes` CHANGE `ciudad` `ciudad` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
 ALTER TABLE `clientes` CHANGE `estado` `estado` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+
+ echo "<script>";
+echo "alert('El correo ya esta registrado, ingresa otro');"; 
+echo "window.location = 'signup_cliente.html';";
+echo "</script>";
