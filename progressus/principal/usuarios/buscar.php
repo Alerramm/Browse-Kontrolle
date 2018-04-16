@@ -1,3 +1,20 @@
+<?php
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+} else {
+echo "<script>";
+echo "location.href='../index.html'";  
+echo "</script>";	
+echo "Esta pagina es solo para usuarios registrados.";
+}
+$now = time();
+if($now > $_SESSION['expire']) {
+session_destroy();
+echo "<script>";
+echo "location.href='../index.html'";  
+echo "</script>";
+}
+?>
 <?php 
 $curp="$_REQUEST[correo]";
 if ($curp=="") {
@@ -67,7 +84,7 @@ $id_estado = current($mysqli ->query("SELECT id_estado FROM contactos WHERE corr
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-				<a class="navbar-brand" href="gerente.html"><img src="assets/images/logo1.png" alt="Progressus HTML5 template"></a>
+				<a class="navbar-brand" href="usuarios.php"><img src="assets/images/logo1.png" alt="Progressus HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">

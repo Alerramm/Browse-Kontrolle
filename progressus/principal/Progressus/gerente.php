@@ -1,3 +1,21 @@
+
+<?php
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+} else {
+echo "<script>";
+echo "location.href='../index.html'";  
+echo "</script>"; 
+echo "Esta pagina es solo para usuarios registrados.";
+}
+$now = time();
+if($now > $_SESSION['expire']) {
+session_destroy();
+echo "<script>";
+echo "location.href='../index.html'";  
+echo "</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,14 +50,27 @@
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-				<a class="navbar-brand" href="gerente.html"><img src="assets/images/logo1.png" alt="Progressus HTML5 template"></a>
+				<a class="navbar-brand" href="gerente.php"><img src="assets/images/logo1.png" alt="Progressus HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
-					<li class="active">
-						<a href="usuarios.html">Inicio</a></li>
-					
+					<li class="active"><a href="gerente.php">Inicio</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Acceso <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="signin_cliente_html.php">Cliente</a></li>
+							<li class="active"><a href="signin_usuario_html.php">Usuario</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Registro <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							
+							<li class="active"><a href="signup_usuario.php">Usuario</a></li>
+						</ul>
+					</li>
 					<li><a href="contact.php">Change Status</a></li>
+					<li><a class="btn" href="cerrar.php">CERRAR SESION</a></li>
 				<!--	<li><a href="../index.html">Log Out</a></li>  -->
 				</ul>
 			</div><!--/.nav-collapse -->

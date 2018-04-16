@@ -92,3 +92,26 @@ ALTER TABLE `clientes` CHANGE `estado` `estado` VARCHAR(50) CHARACTER SET utf8 C
 echo "alert('El correo ya esta registrado, ingresa otro');"; 
 echo "window.location = 'signup_cliente.html';";
 echo "</script>";
+
+
+
+
+<li><a class="btn" href="cerrar.php">CERRAR SESION</a></li>
+
+<?php
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+} else {
+echo "<script>";
+echo "location.href='../index.html'";  
+echo "</script>"; 
+echo "Esta pagina es solo para usuarios registrados.";
+}
+$now = time();
+if($now > $_SESSION['expire']) {
+session_destroy();
+echo "<script>";
+echo "location.href='../index.html'";  
+echo "</script>";
+}
+?>

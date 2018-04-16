@@ -1,12 +1,32 @@
+
+<?php
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+} else {
+echo "<script>";
+echo "location.href='../index.html'";  
+echo "</script>"; 
+echo "Esta pagina es solo para usuarios registrados.";
+}
+$now = time();
+if($now > $_SESSION['expire']) {
+session_destroy();
+echo "<script>";
+echo "location.href='../index.html'";  
+echo "</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
 	
-	<title>Sign up - Progressus Bootstrap template</title>
+	<title>Browse-Kontrolle</title>
 
 	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
 	
@@ -24,7 +44,21 @@
 	<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
 
+<script>
+function valida(e){
+    tecla = (document.all) ? e.keyCode : e.which;
 
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla==8){
+        return true;
+    }
+        
+    // Patron de entrada, en este caso solo acepta numeros
+    patron =/[0-9]/;
+    tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+}
+</script>
 </head>
 
 <body>
@@ -34,27 +68,28 @@
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-				<a class="navbar-brand" href="gerente.html"><img src="assets/images/logo1.png" alt="Progressus HTML5 template"></a>
+				<a class="navbar-brand" href="gerente.php"><img src="assets/images/logo1.png" alt="Progressus HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
-					<!--<li><a href="gerente.html">Inicio</a></li> 
+					<li><a href="gerente.php">Inicio</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Acceso <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="signin.html">Cliente</a></li>
-							<li class="active"><a href="signin.html">Usuario</a></li>
+							<li><a href="signin_cliente_html.php">Cliente</a></li>
+							<li class="active"><a href="signin_usuario_html.php">Usuario</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Registro <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="sidebar-left.html">Producto</a></li>
-							<li class="active"><a href="signup_usuario.html">Usuario</a></li>
+							
+							<li class="active"><a href="signup_usuario.php">Usuario</a></li>
 						</ul>
 					</li>
-					<li><a href="contact.html">Change Status</a></li> -->
- 				</ul> -->
+					<li><a href="contact.php">Change Status</a></li>
+					<li><a class="btn" href="cerrar.php">CERRAR SESION</a></li>
+				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
 	</div> 
@@ -66,8 +101,8 @@
 	<div class="container">
 
 		<ol class="breadcrumb">
-			<li><a href="gerente.html">Regresar</a></li>
-			<li class="active">Modificacion</li>
+			<li><a href="gerente.php">Home</a></li>
+			<li class="active">Registro Usuario</li>
 		</ol>
 
 		<div class="row">
@@ -75,17 +110,17 @@
 			<!-- Article main content -->
 			<article class="col-xs-12 maincontent">
 				<header class="page-header">
-					<h1 class="page-title">Modificar Usuario</h1>
+					<h1 class="page-title">Registro Usuario</h1>
 				</header>
 				
 				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<h3 class="thin text-center">Modificacion de Usuario</h3>
+							<h3 class="thin text-center">Registrar un nuevo usuario</h3>
 							
 							<hr>
 
-							<form action="modificacion_usuario.php" method="post" autocomplete="off">
+							<form action="registro_usuario.php" method="post" autocomplete="off">
 								<div class="top-margin">
 									<label>Nombre<span class="text-danger">*</span></label>
 									<input type="text" name="nombre" class="form-control" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
@@ -108,7 +143,7 @@
 								</div>
 								<div class="top-margin">
 									<label>Numero de Seguro Social<span class="text-danger">*</span></label>
-									<input type="text" minlength="11"  maxlength="11"  name="imms" class="form-control" required id="username" onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" />
+									<input type="text" minlength="11"  maxlength="11"  name="imms" class="form-control" required id="username" onkeypress="return valida(event)" >
 								</div>
 								<div class="top-margin">
 									<label>Estado<span class="text-danger">*</span></label>
@@ -136,7 +171,7 @@
 								<div class="row">
 									
 									<div class="col-lg-4 text-right">
-										<button class="btn btn-action" type="submit">Modificar</button>
+										<button class="btn btn-action" type="submit">Registrar</button>
 									</div>
 								</div>
 							</form>
